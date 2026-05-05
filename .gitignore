@@ -1,0 +1,7 @@
+# Editor folders
+.vscode/
+.idea/
+
+
+# Environment variables (sensitive data)
+.env
