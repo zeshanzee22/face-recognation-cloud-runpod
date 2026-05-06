@@ -32,11 +32,12 @@ def handler(job):
     batch_results = []
 
     for item in faces_list:
-        image_b64  = item["face_b64"]
+        # Standardized to match Local Server key
+        face_b64   = item["face_b64"]
         process_id = item["pid"]
 
         # 1. Decode & Pre-process
-        img_bytes = base64.b64decode(image_b64)
+        img_bytes = base64.b64decode(face_b64)
         img_pil   = Image.open(io.BytesIO(img_bytes)).convert("RGB")
         # Resize to ArcFace standard input size
         face_bgr  = np.array(img_pil.resize((112, 112), Image.BILINEAR))[:, :, ::-1]
@@ -56,7 +57,7 @@ def handler(job):
             idx = np.argmax(sims)
             top_score = float(sims[idx])
             
-            # Recognition Threshold (Adjust as needed)
+            # Recognition Threshold (Adjusted as per your logic)
             if top_score > 0.50:
                 final_name = str(db_labels[idx])
 
