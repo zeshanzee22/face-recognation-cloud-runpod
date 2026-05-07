@@ -72,11 +72,11 @@ def handler(job):
 
             if top_score > 0.50:
                 final_name = top_label
-                print(f"    RESULT    : ✅ RECOGNIZED | {final_name} (score={top_score:.4f})")
+                print(f"    RESULT    :  RECOGNIZED | {final_name} (score={top_score:.4f})")
             else:
-                print(f"    RESULT    : ❌ UNKNOWN    (score={top_score:.4f})")
+                print(f"    RESULT    :  UNKNOWN    (score={top_score:.4f})")
         else:
-            print(f"    RESULT    : ⚠️  embedding=None (bad face crop?)")
+            print(f"    RESULT    :   embedding=None (bad face crop?)")
 
         batch_results.append({
             "name":      final_name,
